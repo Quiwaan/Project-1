@@ -1,0 +1,58 @@
+
+#board div {
+	position:absolute;
+	background-color: ;
+	border: 1px solid black;
+	width:50px;
+	height:50px;
+}
+
+button {
+	color: black;
+	background-color: white;
+	border: 0;
+	font-size: 25px;
+	line-height: 25px;
+	padding: 15px;
+	border-radius: 15px;
+	float: right;
+	position: center;
+}
+
+
+
+/*.square {
+	display: grid;
+  grid-template-columns: repeat(3, 5px);
+  grid-gap: 10px;
+	display: grid;
+	grid-template-columns: repeat(10, 5px );
+	height: 100px;
+	width: 100px;
+	background-color: red;
+	border: 1px solid black;
+	margin: 0;
+}*/
+/*.square {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: red;
+}
+*/
+/*.board{
+
+}
+
+.square > div {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: red;
+    padding: 1em;
+    color: #d9480f;
+}
+.square {
+  display: grid;
+  grid-template-rows: repeat(80, 50px);
+grid-template-columns: repeat(80, 50px);
+
+}*/
