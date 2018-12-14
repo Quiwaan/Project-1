@@ -1,6 +1,9 @@
+#board {
+	position: relative;
+}
 
 #board div {
-	position:absolute;
+	position: absolute;
 	background-color: ;
 	border: 1px solid black;
 	width:50px;
@@ -19,7 +22,10 @@ button {
 	position: center;
 }
 
-
+#msg-div {
+	position: relative;
+	top: 500px;
+}
 
 /*.square {
 	display: grid;

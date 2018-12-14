@@ -7,6 +7,7 @@ var cols = 10;
 var squareSize = 50;
 
 var gameBoardGrid = document.getElementById("board");
+var messages = document.getElementById("msg");
 
 // make the grid columns and rows, got from stackflow
 for (i = 0; i < cols; i++) {
@@ -73,17 +74,27 @@ function fireHit(e) {
 		e.target.setAttribute("data-marked", "true")
 	}
 	if(hits == 17){
-		alert("all ships DEAD");
+		messages.textContent = "all ships dead you are the winner";
 	}
 }
+
+
+var resetButton = document.getElementById("reset-game");
+	resetButton.addEventListener("click", resetGame);
+		console.log("reset click");
+
 	
-function resetGame() {
-		for (i=0; i<squareDivs.length; i++) {
-			squareDivs[i].innerHTML = "";
-		}
-		squareDivs = [];
-		gameBoard = [];
+	
+function resetGame(e) {
+	squareDivs.forEach(function(cell){
+		cell.setAttribute("data-marked", "false")
+		cell.style.background = "white";
+		hits = 0;
+		messages.textContent = " ";
+	})
+
 }
+
 
 
 
