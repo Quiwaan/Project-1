@@ -3,11 +3,22 @@
 }
 
 #board div {
+	display: inline-block;
 	position: absolute;
 	background-color: ;
 	border: 1px solid black;
 	width:50px;
 	height:50px;
+}
+#board2 div{
+	display: inline-block;
+	position: absolute;
+	background-color: ;
+	border: 1px solid black;
+	width:50px;
+	height:50px;
+	margin-left: 550px;
+	margin-top: 7px;
 }
 
 button {

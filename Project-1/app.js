@@ -5,36 +5,64 @@ document.addEventListener('DOMContentLoaded', function(){
 var rows = 10;
 var cols = 10;
 var squareSize = 50;
-
+var gameBoardGrid2 = document.getElementById("board2")
 var gameBoardGrid = document.getElementById("board");
 var messages = document.getElementById("msg");
-
+function setShotGrid(){
 // make the grid columns and rows, got from stackflow
-for (i = 0; i < cols; i++) {
-	for (j = 0; j < rows; j++) {
-		
-		// create a new div HTML element for each grid square 
-		var square = document.createElement("div");
-		gameBoardGrid.appendChild(square);
-		square.setAttribute("data-marked", 'false')
+	for (i = 0; i < cols; i++) {
+		for (j = 0; j < rows; j++) {
+			
+			// create a new div HTML element for each grid square 
+			var square = document.createElement("div");
+			gameBoardGrid.appendChild(square);
+			square.setAttribute("data-marked", 'false')
 
-    // give each div element an id 
-		square.id = 'sq' + j + i;	
+	    // give each div element an id 
+			square.id = 'sq' + j + i;	
 
-		square.classList.add("square")
+			square.classList.add("square")
 
-		
-		// multiples of the current row or column number
-		var topPosition = j * squareSize;
-		var leftPosition = i * squareSize;			
-		
-		// place each grid square on the page
-		square.style.top = topPosition + 'px';
-		square.style.left = leftPosition + 'px';						
+			
+			// multiples of the current row or column number
+			var topPosition = j * squareSize;
+			var leftPosition = i * squareSize;			
+			
+			// place each grid square on the page
+			square.style.top = topPosition + 'px';
+			square.style.left = leftPosition + 'px';						
+		}
 	}
 }
+setShotGrid()
 
+function setShipGrid(){
+// make the grid columns and rows, got from stackflow
+	for (i = 0; i < cols; i++) {
+		for (j = 0; j < rows; j++) {
+			
+			// create a new div HTML element for each grid square 
+			var square = document.createElement("div");
+			gameBoardGrid2.appendChild(square);
+			square.setAttribute("data-marked", 'false')
 
+	    // give each div element an id 
+			square.id = 'sq' + j + i;	
+
+			square.classList.add("square")
+
+			
+			// multiples of the current row or column number
+			var topPosition = j * squareSize;
+			var leftPosition = i * squareSize;			
+			
+			// place each grid square on the page
+			square.style.top = topPosition + 'px';
+			square.style.left = leftPosition + 'px';						
+		}
+	}
+}
+setShipGrid()
 
 // 0 = square, 1 = ship, 2 = hit, 3 = missed
 
