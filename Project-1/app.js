@@ -86,25 +86,25 @@ squareDivs.forEach(function(cell){
 	cell.addEventListener("click", fireHit);
 });
 
-function fireHit(e) {
-	if(e.target.getAttribute("data-marked") === 'false') {
-		console.log("inside fire hit");
-		var x = e.target.id[3];
-		var y = e.target.id[2];
-		if (gameBoard[y][x]) {
-			e.target.style.background = "red";
-			console.log(x,y, 'hit');
-			hits++;
-		} else {
-			e.target.style.background = "blue";
-			console.log(x,y, 'miss');
-		}
-		e.target.setAttribute("data-marked", "true")
-	}
-	if(hits == 17){
-		messages.textContent = "all ships dead you are the winner";
-	}
-}
+// function fireHit(e) {
+// 	if(e.target.getAttribute("data-marked") === 'false') {
+// 		console.log("inside fire hit");
+// 		var x = e.target.id[3];
+// 		var y = e.target.id[2];
+// 		if (gameBoard[y][x]) {
+// 			e.target.style.background = "red";
+// 			// console.log(x,y, 'hit');
+// 			hits++;
+// 		} else {
+// 			e.target.style.background = "blue";
+// 			// console.log(x,y, 'miss');
+// 		}
+// 		e.target.setAttribute("data-marked", "true")
+// 	}
+// 	if(hits == 17){
+// 		messages.textContent = "all ships dead you are the winner";
+// 	}
+// }
 
 
 var resetButton = document.getElementById("reset-game");
@@ -123,7 +123,14 @@ function resetGame(e) {
 
 }
 
-
+ 
+function clicks(e){
+		var x = e.target.id[3];
+		var y = e.target.id[2];
+		if (gameBoard[y][x]) {
+			console.log(x,y,);
+		}
+}
 
 
 // 		if (gameBoard[row][col] == 0){
