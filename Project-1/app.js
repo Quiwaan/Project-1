@@ -95,6 +95,7 @@ var gameBoard2 = [
 
 
 // stores the html collection in an array so we can run forEach on it
+var clickCount = 0;
 var hits = 0;
 var ships = 0;
 var squareDivs = Array.from(document.getElementsByClassName("square"));
@@ -139,6 +140,7 @@ function resetGame(e) {
 
 }
 
+
 var squareDivs2 = Array.from(document.getElementsByClassName("square2"));
 squareDivs2.forEach(function(cell){
 cell.addEventListener("click", clicks);
@@ -153,16 +155,73 @@ function clicks(e){
 	gameBoard2[y][x] = 1;
 	document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'darkgrey';
 	console.log(gameBoard2);
-	ships++
-	if(ships > 17 ){
+	clickCount++;
+	if(clickCount == 17 ){
 		messages.textContent = "Only 17 clicks available to place ships"
 	}
 
 }
 
+	// var remainingSquares = gameBoard2[Math.floor(Math.random() * 3 + 1 gameBoard2.length)];
+	// var pickSquare = squareDivs2[Math.floor(Math.random() * squareDivs2.length)];
+	// function randomNum(){
+
+		
+
+	// }
+var fireButton = document.getElementById("fire");
+fireButton.addEventListener("click", fireAtBestPosition);
+		console.log("reset click");
+
+
+function fireAtBestPosition(e) {
+	squareDivs.forEach(function(cell){
+        var pos = getRandomPosition();
+          var x = e.target.id[0];
+           var y = e.target.id[1];
+
+        if ([x][y] === 0) {
+            [x][y] = 1;
+            document.getElementById(`sq${y}${x}`).style.backgroundColor = 'red';
+            // hitsMade++;
+        } else[x][y] = 3;
+    }) 
+    console.log("fire")
+}
 
 
 
+
+
+
+
+
+
+
+	
+	// function getRandomShips() {
+	// 	var x = Math.floor(Math.random() * 2) + 2;
+	// 	 var y = Math.floor(Math.random() * 2) + 2;
+	// 	 document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'blue';
+ //         return [x, y];
+	// 	 console.log(x, y)
+
+	// }
+
+
+
+
+
+// getRandomShips()
+
+  function getRandomPosition() {
+        var x = Math.floor(Math.random() * 10);
+        var y = Math.floor(Math.random() * 10);
+        // document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'red';
+         return [x, y];
+    } 
+
+getRandomPosition()
 
 
 

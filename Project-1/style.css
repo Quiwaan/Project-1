@@ -21,7 +21,7 @@
 	margin-top: 7px;
 }
 
-button {
+/*button {
 	color: black;
 	background-color: white;
 	border: 0;
@@ -31,6 +31,20 @@ button {
 	border-radius: 15px;
 	float: right;
 	position: center;
+}*/
+
+#fire{
+	color: black;
+	background-color: red;
+	border: 0;
+	font-size: 25px;
+	line-height: 25px;
+	padding: 15px;
+	border-radius: 15px;
+	float: right;
+	position: relative;
+	top: 500px;
+	
 }
 
 #msg-div {
