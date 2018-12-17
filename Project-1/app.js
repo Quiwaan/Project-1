@@ -81,20 +81,21 @@ var gameBoard = [
 ];
 
 var gameBoard2 = [
+[0,0,1,0,0,0,1,0,0,0],
+[0,0,1,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,1,0,0,0],
 [0,0,0,0,0,0,0,0,0,0],
+[1,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,1,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0]
+[0,0,1,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,1,0,1],
+[0,0,0,1,0,0,0,0,0,0]
 ];
 
 
 // stores the html collection in an array so we can run forEach on it
+
 var clickCount = 0;
 var hits = 0;
 var ships = 0;
@@ -117,9 +118,11 @@ function fireHit(e) {
 			// console.log(x,y, 'miss');
 		}
 		e.target.setAttribute("data-marked", "true")
+
 	}
 	if(hits == 17){
 		messages.textContent = "all ships dead you are the winner";
+
 	}
 }
 
@@ -153,7 +156,7 @@ function clicks(e){
 	var y = e.target.id[2];
 	console.log(x,y);
 	gameBoard2[y][x] = 1;
-	document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'darkgrey';
+	document.getElementById(`sq${y}${x}`).style.backgroundColor = 'darkgrey';
 	console.log(gameBoard2);
 	clickCount++;
 	if(clickCount == 17 ){
@@ -161,6 +164,80 @@ function clicks(e){
 	}
 
 }
+	// // for board 1 
+	// function placeRandomShips() {
+	// 	return (Math.round(Math.random()) == 1);
+		
+	// 	 console.log(x, y)
+	// }
+	// placeRandomShips()
+
+
+
+var positions = [];
+var fireButton = document.getElementById("fire");
+ fireButton.addEventListener("click", fireAtPosition);
+		console.log("reset click");
+
+
+
+  function getRandomPosition() {
+        var x = Math.floor(Math.random() * 10);
+        var y = Math.floor(Math.random() * 10);
+        // document.getElementById(`sQ${y}${x}`).style.backgroundColor = '';
+         return [x, y];
+    } 
+
+
+
+
+
+function fireAtPosition(e) {
+	var pos = getRandomPosition()
+     var x = pos[0];
+     var y = pos[1];
+	console.log(y,x);
+	if (gameBoard[y][x] = 1) {
+			e.target.style.background = "red";
+} else { gameboard[x][y] = 2;
+			e.target.style.background = "blue";
+			// console.log(x,y, 'miss');
+		}  
+}
+
+//      if(e.target.getAttribute("data-marked") === 'false') {
+// 		console.log("inside fire hit");
+// 		var x = e.target.id[0];
+// 		var y = e.target.id[1];
+// 		if (gameBoard[y][x] = 1) {
+// 			e.target.style.background = "red";
+// 			// console.log(x,y, 'hit');
+// 			hits++;
+// 		} else { gameboard[x][y] = 2;
+// 			e.target.style.background = "blue";
+// 			// console.log(x,y, 'miss');
+// 		}  
+// 		e.target.setAttribute("data-marked", "true")
+
+// 	}
+
+
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// var remainingSquares = gameBoard2[Math.floor(Math.random() * 3 + 1 gameBoard2.length)];
 	// var pickSquare = squareDivs2[Math.floor(Math.random() * squareDivs2.length)];
@@ -169,25 +246,26 @@ function clicks(e){
 		
 
 	// }
-var fireButton = document.getElementById("fire");
-fireButton.addEventListener("click", fireAtBestPosition);
-		console.log("reset click");
+// var fireButton = document.getElementById("fire");
+// fireButton.addEventListener("click", fireAtBestPosition);
+// 		console.log("reset click");
 
 
-function fireAtBestPosition(e) {
-	squareDivs.forEach(function(cell){
-        var pos = getRandomPosition();
-          var x = e.target.id[0];
-           var y = e.target.id[1];
+// function fireAtBestPosition(e) {
+// 	squareDivs.forEach(function(cell){
+//         var pos = getRandomPosition();
+//           var x = e.target.id[0];
+//            var y = e.target.id[1];
 
-        if ([x][y] === 0) {
-            [x][y] = 1;
-            document.getElementById(`sq${y}${x}`).style.backgroundColor = 'red';
-            // hitsMade++;
-        } else[x][y] = 3;
-    }) 
-    console.log("fire")
-}
+//            gameBoard[x][y] === 0;
+//             gameBoard[x][y] = 1;
+//             document.getElementById(`sq${y}${x}`).style.backgroundColor = 'red';
+//             // hitsMade++;
+//     })// })       else[x][y] = 3;
+    
+// }
+
+
 
 
 
@@ -199,34 +277,7 @@ function fireAtBestPosition(e) {
 
 
 	
-	// function getRandomShips() {
-	// 	var x = Math.floor(Math.random() * 2) + 2;
-	// 	 var y = Math.floor(Math.random() * 2) + 2;
-	// 	 document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'blue';
- //         return [x, y];
-	// 	 console.log(x, y)
-
-	// }
-
-
-
-
-
-// getRandomShips()
-
-  function getRandomPosition() {
-        var x = Math.floor(Math.random() * 10);
-        var y = Math.floor(Math.random() * 10);
-        // document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'red';
-         return [x, y];
-    } 
-
-getRandomPosition()
-
-
-
-
-
+	
 
 
 
