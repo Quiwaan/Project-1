@@ -81,16 +81,16 @@ var gameBoard = [
 ];
 
 var gameBoard2 = [
-[0,0,1,0,0,0,1,0,0,0],
-[0,0,1,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,1,0,0,0],
 [0,0,0,0,0,0,0,0,0,0],
-[1,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,1,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0],
-[0,0,1,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,1,0,1],
-[0,0,0,1,0,0,0,0,0,0]
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0]
 ];
 
 
@@ -120,10 +120,11 @@ function fireHit(e) {
 		e.target.setAttribute("data-marked", "true")
 
 	}
-	if(hits == 17){
-		messages.textContent = "all ships dead you are the winner";
+	
+	// if(hits == 17){
+	// 	messages.textContent = "all ships dead you are the winner";
 
-	}
+	// }
 }
 
 
@@ -156,7 +157,7 @@ function clicks(e){
 	var y = e.target.id[2];
 	console.log(x,y);
 	gameBoard2[y][x] = 1;
-	document.getElementById(`sq${y}${x}`).style.backgroundColor = 'darkgrey';
+	document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'darkgrey';
 	console.log(gameBoard2);
 	clickCount++;
 	if(clickCount == 17 ){
@@ -164,13 +165,29 @@ function clicks(e){
 	}
 
 }
-	// // for board 1 
-	// function placeRandomShips() {
-	// 	return (Math.round(Math.random()) == 1);
-		
-	// 	 console.log(x, y)
-	// }
-	// placeRandomShips()
+	// for board 1 
+    function placeRandomSquare() {
+    	var pos = getRandomPosition()
+    	var x = [Math.floor(Math.random() * 10)];
+    	var y = [Math.floor(Math.random() * 10)];
+    	gameBoard2[y][x] = 1;
+    	document.getElementById(`sQ${y}${x}`).style.backgroundColor = '';
+    	console.log(gameBoard2)
+   }
+    // placeRandomSquare();
+
+ 
+  
+
+var callCount = 1;
+var repeater = setInterval(function () {
+  if (callCount < 18) {
+    placeRandomSquare();
+    callCount += 1;
+  } else {
+    clearInterval(repeater);
+  }
+}, 1);
 
 
 
@@ -197,13 +214,14 @@ function fireAtPosition(e) {
      var x = pos[0];
      var y = pos[1];
 	console.log(y,x);
-	if (gameBoard[y][x] = 1) {
-			e.target.style.background = "red";
-} else { gameboard[x][y] = 2;
-			e.target.style.background = "blue";
-			// console.log(x,y, 'miss');
-		}  
-}
+	if (gameBoard2[y][x] == 1) {
+		document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'red';	
+	// } else (gameBoard2[y][x] == 3){
+	// 	document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'blue';
+	}
+			
+}  
+
 
 //      if(e.target.getAttribute("data-marked") === 'false') {
 // 		console.log("inside fire hit");
