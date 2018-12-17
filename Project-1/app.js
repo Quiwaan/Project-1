@@ -121,10 +121,10 @@ function fireHit(e) {
 
 	}
 
-	// if(hits == 17){
-	// 	messages.textContent = "all ships dead you are the winner";
+	if(hits == 17){
+		messages.textContent = "all ships dead you are the winner";
 
-	// }
+	}
 }
 
 
@@ -140,6 +140,13 @@ function resetGame(e) {
 		cell.style.background = "white";
 		hits = 0;
 		messages.textContent = " ";
+	})
+	squareDivs2.forEach(function(cell){
+		cell.setAttribute("data-marked2", "false")
+		cell.style.background = "white";
+		hits = 0;
+		messages.textContent = " ";
+		clickCount = 0;
 	})
 
 }
@@ -180,12 +187,11 @@ function clicks(e){
    }
     // placeRandomSquare();
 
- 
-  
+
 
 var callCount = 1;
 var repeater = setInterval(function () {
-  if (callCount < 18) {
+  if (callCount < 19) {
     placeRandomSquare();
     callCount += 1;
   } else {
