@@ -52,6 +52,11 @@ button {
 	top: 500px;
 }
 
+h1{
+	display: center;
+	text-align: center;
+}
+
 /*.square {
 	display: grid;
   grid-template-columns: repeat(3, 5px);

@@ -68,16 +68,16 @@ setShipGrid()
 // 0 = square, 1 = ship, 2 = hit, 3 = missed
 
 var gameBoard = [
-[0,0,0,0,0,0,0,1,1,1],
-[0,0,0,1,0,0,0,0,0,0],
-[0,0,0,1,0,0,0,0,0,0],
-[0,0,0,1,0,0,0,0,0,0],
-[0,0,0,1,0,0,0,0,0,0],
-[0,0,0,1,0,0,0,0,0,0],
-[0,1,0,0,1,1,1,1,0,0],
-[0,1,0,0,0,0,0,0,0,0],
-[0,1,0,0,0,0,0,0,0,0],
-[0,0,0,0,1,1,0,0,0,0]
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0]
 ];
 
 var gameBoard2 = [
@@ -120,7 +120,7 @@ function fireHit(e) {
 		e.target.setAttribute("data-marked", "true")
 
 	}
-	
+
 	// if(hits == 17){
 	// 	messages.textContent = "all ships dead you are the winner";
 
@@ -145,11 +145,15 @@ function resetGame(e) {
 }
 
 
+var squareDivs2 = Array.from(document.getElementsByClassName("square"));
+squareDivs2.forEach(function(cell){
+cell.addEventListener("click", fireAi, clicks);
+});
+
 var squareDivs2 = Array.from(document.getElementsByClassName("square2"));
 squareDivs2.forEach(function(cell){
 cell.addEventListener("click", clicks);
 });
-
 
   
 function clicks(e){
@@ -165,14 +169,14 @@ function clicks(e){
 	}
 
 }
-	// for board 1 
+	
     function placeRandomSquare() {
     	var pos = getRandomPosition()
     	var x = [Math.floor(Math.random() * 10)];
     	var y = [Math.floor(Math.random() * 10)];
-    	gameBoard2[y][x] = 1;
-    	document.getElementById(`sQ${y}${x}`).style.backgroundColor = '';
-    	console.log(gameBoard2)
+    	gameBoard[y][x] = 1;
+    	document.getElementById(`sq${y}${x}`).style.backgroundColor = '';
+    	console.log(gameBoard)
    }
     // placeRandomSquare();
 
@@ -193,8 +197,8 @@ var repeater = setInterval(function () {
 
 var positions = [];
 var fireButton = document.getElementById("fire");
- fireButton.addEventListener("click", fireAtPosition);
-		console.log("reset click");
+ // fireButton.addEventListener("click", fireAtPosition);
+	// 	console.log("reset click");
 
 
 
@@ -209,39 +213,34 @@ var fireButton = document.getElementById("fire");
 
 
 
-function fireAtPosition(e) {
-	var pos = getRandomPosition()
-     var x = pos[0];
-     var y = pos[1];
-	console.log(y,x);
-	if (gameBoard2[y][x] == 1) {
-		document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'red';	
-	// } else (gameBoard2[y][x] == 3){
-	// 	document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'blue';
-	}
-			
-}  
-
-
-//      if(e.target.getAttribute("data-marked") === 'false') {
-// 		console.log("inside fire hit");
-// 		var x = e.target.id[0];
-// 		var y = e.target.id[1];
-// 		if (gameBoard[y][x] = 1) {
-// 			e.target.style.background = "red";
-// 			// console.log(x,y, 'hit');
-// 			hits++;
-// 		} else { gameboard[x][y] = 2;
-// 			e.target.style.background = "blue";
-// 			// console.log(x,y, 'miss');
-// 		}  
-// 		e.target.setAttribute("data-marked", "true")
-
+// function fireAtPosition(e) {
+// 	var pos = getRandomPosition()
+//      var x = pos[0];
+//      var y = pos[1];
+// 	console.log(y,x);
+// 	if (gameBoard2[y][x] == 1) {
+// 		document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'red';	
+// 	// } else (gameBoard2[y][x] == 3){
+// 	// 	document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'blue';
 // 	}
+			
+// }  
+
+
+function fireAi(e){
+	var x = Math.floor(Math.random() * 10);
+	var y = Math.floor(Math.random() * 10);
+	if (gameBoard2[y][x] == 1) {
+		document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'red';
+		console.log(gameBoard2);
+	} else {
+		(gameBoard2[y][x] == 0)
+		document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'blue';
+	}
+	}
 
 
 
-// }
 
 
 
@@ -257,31 +256,6 @@ function fireAtPosition(e) {
 
 
 
-	// var remainingSquares = gameBoard2[Math.floor(Math.random() * 3 + 1 gameBoard2.length)];
-	// var pickSquare = squareDivs2[Math.floor(Math.random() * squareDivs2.length)];
-	// function randomNum(){
-
-		
-
-	// }
-// var fireButton = document.getElementById("fire");
-// fireButton.addEventListener("click", fireAtBestPosition);
-// 		console.log("reset click");
-
-
-// function fireAtBestPosition(e) {
-// 	squareDivs.forEach(function(cell){
-//         var pos = getRandomPosition();
-//           var x = e.target.id[0];
-//            var y = e.target.id[1];
-
-//            gameBoard[x][y] === 0;
-//             gameBoard[x][y] = 1;
-//             document.getElementById(`sq${y}${x}`).style.backgroundColor = 'red';
-//             // hitsMade++;
-//     })// })       else[x][y] = 3;
-    
-// }
 
 
 
