@@ -1,3 +1,9 @@
+body{
+	background-color: black;
+}
+
+
+
 #board {
 	position: relative;
 }
@@ -5,16 +11,16 @@
 #board div {
 	display: inline-block;
 	position: absolute;
-	background-color: ;
-	border: 1px solid black;
+	background-color: black  ;
+	border: 1px solid white;
 	width:50px;
 	height:50px;
 }
 #board2 div{
 	display: inline-block;
 	position: absolute;
-	background-color: ;
-	border: 1px solid black;
+	background-color: black ;
+	border: 1px solid white;
 	width:50px;
 	height:50px;
 	margin-left: 550px;
@@ -57,3 +63,41 @@ button {
 	text-align: center;
 }
 */
+
+.callout {
+  position: fixed;
+  bottom: 35px;
+  right: 20px;
+  margin-left: 20px;
+  max-width: 300px;
+}
+
+/* Callout header */
+.callout-header {
+  padding: 25px 15px;
+  background: #555;
+  font-size: 30px;
+  color: white;
+}
+
+/* Callout container/body */
+.callout-container {
+  padding: 15px;
+  background-color: #ccc;
+  color: black
+}
+
+/* Close button */
+.closebtn {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Change color on mouse-over */
+.closebtn:hover {
+  color: lightgrey;
+}

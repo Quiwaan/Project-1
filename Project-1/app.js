@@ -61,7 +61,7 @@ function setShipGrid(){
 			square2.style.top = topPosition + 'px';
 			square2.style.left = leftPosition + 'px';						
 		}
-	}
+	} messages.textContent = "Click board two to place squares";
 }
 setShipGrid()
 
