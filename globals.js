@@ -3,9 +3,9 @@ var update = document.getElementById('update');
 document.getElementById('buttons').onclick = function() {
     navClicks++;
     if(navClicks===1) {
-        update.innerHTML = 'Place ships on Board Two, You must choose 17 squares each square equals a ship';
+        update.innerHTML = 'Board One will on your left, Board Two will be on your right. be oPlace ships on Board Two, You must choose 17 squares each square equals a ship';
     } else if(navClicks===2) {
-        update.innerHTML = 'Board One will be on your left. This is the board you will shoot your missles at. Red is hit, blue is miss.';
+        update.innerHTML = 'Board One will be the board you will shoot your missles at. Red is hit, blue is miss.';
     } else if(navClicks===3) {
         update.innerHTML = 'Click anywhere on Board One to shoot your missles! As soon as you click and shoot the computer will take its shot at your ships!';
     } else if(navClicks===4) {
