@@ -3,7 +3,6 @@ body{
 }
 
 
-
 #board {
 	position: relative;
 }
@@ -27,16 +26,27 @@ body{
 	margin-top: 7px;
 }
 
+p{
+	color: red;
+	font-weight: bold;
+}
+
 button {
+	position:absolute;
+    top:50px;
+    right:0;
+    margin-right: 190px;
 	color: black;
 	background-color: white;
 	border: 0;
-	font-size: 25px;
-	line-height: 25px;
+	font-size: 15px;
+	/*line-height: 25px;
 	padding: 15px;
 	border-radius: 15px;
 	float: right;
 	position: center;
+	margin-top: 550px;
+	left: 50px;*/
 }
 
 /*#fire{
@@ -56,48 +66,30 @@ button {
 #msg-div {
 	position: relative;
 	top: 500px;
+	color: white;
 }
 
-/*h1{
-	display: center;
-	text-align: center;
-}
-*/
-
-.callout {
-  position: fixed;
-  bottom: 35px;
-  right: 20px;
-  margin-left: 20px;
-  max-width: 300px;
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
 }
 
-/* Callout header */
-.callout-header {
-  padding: 25px 15px;
-  background: #555;
-  font-size: 30px;
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
   color: white;
 }
 
-/* Callout container/body */
-.callout-container {
-  padding: 15px;
-  background-color: #ccc;
-  color: black
-}
-
-/* Close button */
-.closebtn {
-  position: absolute;
-  top: 5px;
-  right: 15px;
-  color: white;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-/* Change color on mouse-over */
-.closebtn:hover {
-  color: lightgrey;
+.round {
+  border-radius: 50%;
 }

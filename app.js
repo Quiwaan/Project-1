@@ -62,6 +62,7 @@ function setShipGrid(){
 			square2.style.left = leftPosition + 'px';						
 		}
 	} messages.textContent = "Click board two to place squares";
+		
 }
 setShipGrid()
 
@@ -96,8 +97,9 @@ var gameBoard2 = [
 
 // stores the html collection in an array so we can run forEach on it
 
-var clickCount = 0;
+var myShips = 0;
 var hits = 0;
+var aiHits = 0;
 var ships = 0;
 var squareDivs = Array.from(document.getElementsByClassName("square"));
 squareDivs.forEach(function(cell){
@@ -105,26 +107,42 @@ squareDivs.forEach(function(cell){
 });
 
 function fireHit(e) {
-	if(e.target.getAttribute("data-marked") === 'false') {
-		console.log("inside fire hit");
-		var x = e.target.id[3];
+// ignore all listeners accept click
+
+
+if(myShips == 17){
+	if(e.target.style.background == "red" || e.target.style.background =="blue"){
+
+		console.log("worked")
+		return false;
+    } else{
+	var x = e.target.id[3];
 		var y = e.target.id[2];
-		if (gameBoard[y][x]) {
-			e.target.style.background = "red";
-			// console.log(x,y, 'hit');
-			hits++;
-		} else {
-			e.target.style.background = "blue";
-			// console.log(x,y, 'miss');
+			if(e.target.getAttribute("data-marked") === 'false') {
+				console.log("inside fire hit");
+				if (gameBoard[y][x]) {				
+					e.target.style.background = "red";
+					// this.remove("click", "sq")
+					// console.log(x,y, 'hit');
+					hits++;
+				} else {
+					e.target.style.background = "blue";
+					// console.log(x,y, 'miss');
+				}
+				e.target.setAttribute("data-marked", "true")
+				console.log(gameBoard)
+				fireAi();
+			}
+		
+
+	} 
+}
+
+		if(hits == 17){
+		alert(messages.textContent = "all ships dead you are the winner");
 		}
-		e.target.setAttribute("data-marked", "true")
 
-	}
-
-	if(hits == 17){
-		messages.textContent = "all ships dead you are the winner";
-
-	}
+		
 }
 
 
@@ -137,43 +155,53 @@ var resetButton = document.getElementById("reset-game");
 function resetGame(e) {
 	squareDivs.forEach(function(cell){
 		cell.setAttribute("data-marked", "false")
-		cell.style.background = "white";
+		cell.style.background = "black";
 		hits = 0;
 		messages.textContent = " ";
 	})
 	squareDivs2.forEach(function(cell){
 		cell.setAttribute("data-marked2", "false")
-		cell.style.background = "white";
+		cell.style.background = "black";
 		hits = 0;
+		aiHits = 0;
 		messages.textContent = " ";
-		clickCount = 0;
+		myShips = 0;
 	})
 
 }
 
 
-var squareDivs2 = Array.from(document.getElementsByClassName("square"));
-squareDivs2.forEach(function(cell){
-cell.addEventListener("click", fireAi, clicks);
-});
+// var squareDivs2 = Array.from(document.getElementsByClassName("square"));
+// squareDivs2.forEach(function(cell){
+// cell.addEventListener("click", fireAi);
+// });
 
 var squareDivs2 = Array.from(document.getElementsByClassName("square2"));
 squareDivs2.forEach(function(cell){
-cell.addEventListener("click", clicks);
+cell.addEventListener("click",  clicks);
+
 });
 
   
 function clicks(e){
-	var x = e.target.id[3];
-	var y = e.target.id[2];
-	console.log(x,y);
-	gameBoard2[y][x] = 1;
-	document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'darkgrey';
-	console.log(gameBoard2);
-	clickCount++;
-	if(clickCount == 17 ){
-		messages.textContent = "Only 17 clicks available to place ships"
+
+	if(myShips < 17){
+		
+		var x = e.target.id[3];
+		var y = e.target.id[2];
+		console.log(x,y);
+		gameBoard2[y][x] = 1;
+		document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'darkgrey';
+		console.log(gameBoard2);
+		myShips++;
 	}
+
+	if(myShips == 17){
+		document.getElementById(`sQ${y}${x}`);
+		messages.textContent = "Only 17 clicks available to place ships"
+		
+	}
+	
 
 }
 	
@@ -234,16 +262,28 @@ var fireButton = document.getElementById("fire");
 
 
 function fireAi(e){
-	var x = Math.floor(Math.random() * 10);
+	if(myShips == 17){
+		var x = Math.floor(Math.random() * 10);
 	var y = Math.floor(Math.random() * 10);
 	if (gameBoard2[y][x] == 1) {
 		document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'red';
 		console.log(gameBoard2);
+		 aiHits++
 	} else {
 		(gameBoard2[y][x] == 0)
 		document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'blue';
+
 	}
+	console.log("");
+
+
+
+	 }
+	 if(aiHits == 17){
+		alert(messages.textContent = "all ships are dead you are the winner");
 	}
+}
+
 
 
 
