@@ -265,23 +265,23 @@ function fireAi(e){
 	if(myShips == 17){
 		var x = Math.floor(Math.random() * 10);
 	var y = Math.floor(Math.random() * 10);
-	if (gameBoard2[y][x] == 1) {
-		document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'red';
-		console.log(gameBoard2);
-		 aiHits++
-	} else {
-		(gameBoard2[y][x] == 0)
-		document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'blue';
+		if (gameBoard2[y][x] == 1) {
+			document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'red';
+			console.log(gameBoard2);
+			 aiHits++
+		} else {
+			(gameBoard2[y][x] == 0)
+			document.getElementById(`sQ${y}${x}`).style.backgroundColor = 'blue';
 
-	}
-	console.log("");
+		}
+		console.log("");
 
 
 
-	 }
-	 if(aiHits == 17){
-		alert(messages.textContent = "all ships are dead you are the winner");
-	}
+		 }
+			 if(aiHits == 17){
+				alert(messages.textContent = "all ships are dead you are the winner");
+			}
 }
 
 
